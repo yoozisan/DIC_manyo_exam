@@ -16,3 +16,4 @@ userモデル
 |  name            |  string  |
 |  email           |  string  |
 |  password_digest |  string  |
+
