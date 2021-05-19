@@ -1,9 +1,9 @@
 <h3>以下の内容で、送信する。</h3>
 <%= form_with(model: @task, url: tasks_path, local: true) do |form| %>
   <%= form.hidden_field :title %>
-  <%= form.hidden_field :detail %>
+  <%= form.hidden_field :content %>
   <p>タイトル:<%= @task.title %></p>
-  <p>内容:<%= @task.detail %></p>
+  <p>内容:<%= @task.content %></p>
   <%= form.submit  "登録する" %>
   <%= form.submit "戻る", name: 'back' %>
 <% end %>
