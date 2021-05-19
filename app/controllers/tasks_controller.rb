@@ -36,6 +36,10 @@ class TasksController < ApplicationController
   	redirect_to tasks_path, notice:"タスクを削除しました！"
   end
 
+  def confirm
+    @task = Task.new(task_params)
+  end
+
   private
   def task_params
       params.require(:task).permit(:title, :detail)
