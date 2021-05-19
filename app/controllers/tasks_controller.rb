@@ -8,6 +8,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @task = Task.find(params[:id])
   end
 
   def new
@@ -17,9 +18,18 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to tasks_path, notice: "ブログを作成しました！"
+      redirect_to tasks_path, notice: "タスクを作成しました！"
     else
       render :new
+    end
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      redirect_to tasks_path, notice: "タスクを編集しました！"
+    else
+      render :edit
     end
   end
 
