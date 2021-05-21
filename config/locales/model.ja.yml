@@ -5,7 +5,7 @@ ja:
       # user: ユーザー
     attributes:
       task:
-        title: タイトル
+        title: タスク名
         content: 内容
       # user:
       #   title: タイトル
