@@ -31,13 +31,16 @@ userモデル
 >heroku create
 5. buildpackを入れる
 >heroku buildpacks:set heroku/ruby
+
 >heroku buildpacks:add --index 1 heroku/nodejs
 6. heroku stackを18に変更
 >heroku stack:set heroku-18
 7. heroku main (or master)にpush
 8. デプロイ出来ない場合、下記platformを入れる
 >bundle lock --add-platform x86_64-linux ※デプロイ出来ない場合
+
 >bundle install --without production
+
 >git commit -a -m "modify the Gemfile.lock"
 9. Heroku main (or master)にpush
 >git push heroku main( or master)
