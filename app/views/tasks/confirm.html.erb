@@ -4,6 +4,7 @@
   <%= form.hidden_field :content %>
   <p>タイトル:<%= @task.title %></p>
   <p>内容:<%= @task.content %></p>
+  <p>終了期限:<%= @task.expired_at %></p>
   <%= form.submit  "登録する" %>
   <%= form.submit "戻る", name: 'back' %>
 <% end %>
