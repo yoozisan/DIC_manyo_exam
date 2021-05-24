@@ -3,6 +3,8 @@ class TasksController < ApplicationController
   def index
     if params[:sort_expired]
       @tasks = Task.order(expired_at: :desc)
+    elsif params[:search]
+      @tasks = Task.where("title LIKE ?", "%#{params[:search_title]}%")
     else
       @tasks = Task.order(created_at: :desc)
     end
