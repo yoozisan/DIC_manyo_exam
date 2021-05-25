@@ -1,10 +1,13 @@
 <h1>タスク詳細画面</h1>
-<p>タイトル: <%= @task.title %></p>
-<p>内容: <%= @task.content %></p>
-<p>終了期限<%= l @task.expired_at %></p>
-<p>登録日<%= l @task.created_at %></p>
-<p>ステータス<%= @task.status_name %></P>
-
+<ul class="tasklist">
+  <li>
+    <p><span class="item_name">タイトル:</span> <%= @task.title %></p>
+    <p><span class="item_name">内容:</span> <%= @task.content %></p>
+    <p><span class="item_name">終了期限</span> <%= l @task.expired_at %></p>
+    <p><span class="item_name">登録日</span> <%= l @task.created_at %></p>
+    <p><span class="item_name">ステータス</span> <%= @task.status_name %></P>
+  </li>
+</ul>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>

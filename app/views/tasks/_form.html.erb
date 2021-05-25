@@ -10,23 +10,25 @@
   </div>
 <% end %>
 
-  <div class="task_title">
+  <div class="field">
     <%= form.label :title %><br>
     <%= form.text_field :title %>
   </div>
-  <div class="task_content">
+  <div class="field">
     <%= form.label :content %><br>
     <%= form.text_area :content %>
   </div>
-  <div class="task_content">
+  <div class="field">
     <%= form.label :expired_at %><br>
     <%= form.datetime_select :expired_at %>
   </div>
-  <div class="task_content">
+  <div class="field">
     <%= form.label :status_name %><br>
     <%= form.select :status_name, ['未着手','着手','完了'] %>
   </div>
   <br>
+  <div class="actions">
   <%= form.submit %>
+  </div>
 <% end %>
 <%= link_to "タスク一覧画面にもどる", tasks_path %>

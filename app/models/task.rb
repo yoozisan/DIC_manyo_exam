@@ -5,4 +5,5 @@ class Task < ApplicationRecord
   validates :status_name, presence: true
   scope :search_title, -> (search_title) { where("title LIKE ?", "%#{search_title}%") }
   scope :search_status, -> (search_status) { where(status_name: search_status)}
+  # enum status_list:{ 未着手: 1, 着手: 2, 完了: 3 }
 end

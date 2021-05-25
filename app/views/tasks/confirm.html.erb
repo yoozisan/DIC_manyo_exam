@@ -4,10 +4,14 @@
   <%= form.hidden_field :content %>
   <%= form.hidden_field :expired_at %>
   <%= form.hidden_field :status_name %>
-  <p>タイトル:<%= @task.title %></p>
-  <p>内容:<%= @task.content %></p>
-  <p>終了期限:<%= @task.expired_at %></p>
-  <p>ステータス:<%= @task.status_name %></P>
-  <%= form.submit  "登録する" %>
-  <%= form.submit "戻る", name: 'back' %>
+  <div class="field">
+    <p><span class="item_name">タイトル:</span> <%= @task.title %></p>
+    <p><span class="item_name">内容:</span> <%= @task.content %></p>
+    <p><span class="item_name">終了期限:</span> <%= @task.expired_at %></p>
+    <p><span class="item_name">ステータス:</span> <%= @task.status_name %></P>
+  </div>
+  <div class="actions">
+    <%= form.submit  "登録する" %>
+    <%= form.submit "戻る", name: 'back' %>
+  </div>
 <% end %>

@@ -13,25 +13,21 @@
     <%= form.submit "検索", name: "search" %>
   <% end %>
 </div>
-<table>
-  <tr>
-    <th>タイトル</th>
-    <th>内容</th>
-    <th>終了期限</th>
-    <th>登録日</th>
-    <th>ステータス</th>
-　</tr>
-<% @tasks.each do |task| %>
-  <tr class="task_list">
-    <td><%= task.title %></td>
-    <td><%= task.content %></td>
-    <td><%= l task.expired_at, format: :long %></td>
-    <td><%= l task.created_at, format: :long %></td>
-    <td><%= task.status_name %></td>
-    <td><%= link_to '詳細を確認する', task_path(task.id) %></td>
-    <td><%= link_to 'タスクを編集する', edit_task_path(task.id), data: { confirm: '本当に編集していいですか？' } %></td>
-    <td><%= link_to 'タスクを削除する', task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
-  </tr>
-<% end %>
-</table>
+
+<ul class="task_list">
+  <% @tasks.each do |task| %>
+  <li>
+    <p><span class="item_name">タイトル</span> <%= task.title %></p>
+    <p><span class="item_name">内容</span> <%= task.content %></p>
+    <p><span class="item_name">終了期限</span> <%= l task.expired_at, format: :long %></p>
+    <p><span class="item_name">登録日</span> <%= l task.created_at, format: :long %></p>
+    <p><span class="item_name">ステータス</span> <%= task.status_name %></p>
+    <p class="btns">
+      <%= link_to '詳細を確認する', task_path(task.id) %>
+      <%= link_to 'タスクを編集する', edit_task_path(task.id), data: { confirm: '本当に編集していいですか？' } %>
+      <%= link_to 'タスクを削除する', task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %>
+    </p>
+  </li>
+  <% end %>
+</ul>
 <%= link_to '新しくタスクを登録する', new_task_path %>
