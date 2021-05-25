@@ -4,7 +4,7 @@ class TasksController < ApplicationController
     if params[:sort_expired]
       @tasks = Task.order(expired_at: :desc)
     elsif params[:search]
-      if params[:search_title].present? && params[:status_name].present?
+      if params[:search_title].present? && params[:search_status].present?
         @tasks = Task.where("title LIKE ?", "%#{params[:search_title]}%").where(status_name: params[:search_status])
       elsif params[:search_title].present?  && params[:search_status].blank?
         @tasks = Task.where("title LIKE ?", "%#{params[:search_title]}%")
