@@ -1,8 +1,8 @@
 require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
-  let!(:task) { FactoryBot.create(:task, title: 'task', content: 'task', expired_at: '2021-06-03 06:03:00', status_name: '未着手') }
-  let!(:task2) { FactoryBot.create(:task, title: 'task2', content: 'task2', expired_at: '2021-07-07 07:07:00', status_name: '着手') }
-  let!(:task3) { FactoryBot.create(:task, title: 'task3', content: 'task3', expired_at: '2021-06-16 06:03:00', status_name: '完了') }
+  let!(:task) { FactoryBot.create(:task, title: 'task', content: 'task', expired_at: '2021-06-03 06:03:00', status_name: '未着手', priority: 1) }
+  let!(:task2) { FactoryBot.create(:task, title: 'task2', content: 'task2', expired_at: '2021-07-07 07:07:00', status_name: '着手', priority: 2) }
+  let!(:task3) { FactoryBot.create(:task, title: 'task3', content: 'task3', expired_at: '2021-06-16 06:03:00', status_name: '完了', priority: 3) }
   before do
     visit tasks_path
   end
@@ -44,6 +44,16 @@ RSpec.describe 'タスク管理機能', type: :system do
         end
         task_list = all('ul li')
         expect(task_list[0]).to have_content 'task2'
+      end
+    end
+    context 'タスクが優先順位の高い順で並んでいる場合' do
+      it '優先順位が高いタスクが一番上に表示される' do
+        # binding.irb
+        within '.sort_expired' do
+          click_on '優先順位でソートする'
+        end
+        task_list = all('ul li')
+        expect(task_list[0]).to have_content 'task3'
       end
     end
   end

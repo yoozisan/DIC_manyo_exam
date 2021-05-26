@@ -1,24 +1,35 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   def index
-    if params[:sort_expired]
-      @tasks = Task.order(expired_at: :desc)
-    elsif params[:sort_priority]
-      @tasks = Task.order(priority: :desc)  
-    elsif params[:search]
-      if params[:search_title].present? && params[:search_status].present?
-        @tasks = Task.search_title(params[:search_title]).search_status(params[:search_status])
-      elsif params[:search_title].present?
-        @tasks = Task.search_title(params[:search_title])
-      elsif params[:search_status].present?
-        @tasks = Task.search_status(params[:search_status])
+    @tasks = Task.all.order(created_at: :desc)
 
-      else
-        @tasks = Task.order(created_at: :desc)
-      end
-    else
-      @tasks = Task.order(created_at: :desc)
+    @tasks = Task.order(expired_at: :desc) if params[:sort_expired].present?
+    @tasks = Task.order(priority: :desc) if params[:sort_priority].present?
+
+    if params[:search]
+      @tasks = @tasks.search_title(params[:search_title]) if params[:search_title].present?
+      @tasks = @tasks.search_status(params[:search_status]) if params[:search_status].present?
     end
+
+    # if params[:sort_expired]
+    #   @tasks = Task.order(expired_at: :desc)
+    #
+    # elsif params[:sort_priority]
+    #   @tasks = Task.order(priority: :desc)
+    #
+    # elsif params[:search]
+    #   if params[:search_title].present? && params[:search_status].present?
+    #     @tasks = Task.search_title(params[:search_title]).search_status(params[:search_status])
+    #   elsif params[:search_title].present?
+    #     @tasks = Task.search_title(params[:search_title])
+    #   elsif params[:search_status].present?
+    #     @tasks = Task.search_status(params[:search_status])
+    #   else
+    #     @tasks = Task.order(created_at: :desc)
+    #   end
+    # else
+    #   @tasks = Task.order(created_at: :desc)
+    # end
   end
 
   def show
