@@ -1,18 +1,36 @@
 <h1>タスク一覧</h1>
 <p><%= notice %></p>
-<table>
-　<tr>
-　　<th>タイトル</th>
-　　<th>内容</th>
-　</tr>
-<% @tasks.each do |task| %>
-  <tr class="task_list">
-    <td><%= task.title %></td>
-    <td><%= task.content %></td>
-    <td><%= link_to '詳細を確認する', task_path(task.id) %></td>
-    <td><%= link_to 'タスクを編集する', edit_task_path(task.id), data: { confirm: '本当に編集していいですか？' } %></td>
-    <td><%= link_to 'タスクを削除する', task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
-  </tr>
-<% end %>
-</table>
+<p class='sort_expired'>
+  <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
+  <%= link_to "優先順位でソートする", tasks_path(sort_priority: "true") %>
+  <%= link_to "登録日が新しい順に戻す", tasks_path %>
+</p>
+<div class="search_box" >
+  <%= form_with(local: true, method: :get, url: tasks_path ) do |form| %>
+    <%= form.label :search_title, "タスク名" %>
+    <%= form.text_field :search_title, placeholder: "タスク名で検索" %>
+    <%= form.label :search_status, "ステータス" %>
+    <%= form.select :search_status, ['未着手', '着手', '完了'], { include_blank: '選択してください'} %>
+    <%= form.submit "検索", name: "search" %>
+  <% end %>
+</div>
+
+<ul class="task_list">
+  <% @tasks.each do |task| %>
+  <li>
+    <p><span class="item_name">タイトル</span> <%= task.title %></p>
+    <p><span class="item_name">内容</span> <%= task.content %></p>
+    <p><span class="item_name">終了期限</span> <%= l task.expired_at, format: :long %></p>
+    <p><span class="item_name">登録日</span> <%= l task.created_at, format: :long %></p>
+    <p><span class="item_name">ステータス</span> <%= task.status_name %></p>
+    <p><span class="item_name">優先順位</span> <%= task.priority %></p>
+    <p class="btns">
+      <%= link_to '詳細を確認する', task_path(task.id) %>
+      <%= link_to 'タスクを編集する', edit_task_path(task.id), data: { confirm: '本当に編集していいですか？' } %>
+      <%= link_to 'タスクを削除する', task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %>
+    </p>
+  </li>
+  <% end %>
+</ul>
+<%= paginate @tasks %>
 <%= link_to '新しくタスクを登録する', new_task_path %>

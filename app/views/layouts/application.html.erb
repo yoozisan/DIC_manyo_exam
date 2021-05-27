@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DICManyoExam</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
   <body>
+    <!-- <header>
+      <div class="container">
+        <h1 class = "tasklogo"><%= link_to 'タスク管理アプリ', tasks_path %></h1>
+      </div>
+    </header>
+    <div class="container"> -->
     <%= yield %>
+    <!-- <footer>
+      <div class="container">
+        <%= date = Time.new %>
+        <p class="copyright">© 1982-2021 kyawai Corp.</p>
+      </div>
+    </footer> -->
   </body>
 </html>
