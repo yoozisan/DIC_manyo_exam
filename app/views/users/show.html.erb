@@ -2,4 +2,5 @@
   <h1><%= @user.name %>のページ</h1>
   <p>メールアドレス: <%= @user.email %></p>
 </article>
-<%= link_to '新しくタスクを登録する', new_task_path %>
+<%= link_to '新しくタスクを登録する', new_task_path %><br>
+<%= link_to 'タスク一覧', tasks_path %>
