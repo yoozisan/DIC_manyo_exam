@@ -1,5 +1,8 @@
 <article class="admin_show">
-  <h2>管理者画面：ユーザー情報詳細</h2>
+  <h1>管理者画面：ユーザー情報詳細</h1>
+  <% if notice %>
+   <p class="alert alert-info"><%= notice %></p>
+  <% end %>
   <section class="profile">
     <p><span class="item_name">ID</span> <%= @user.id %></p>
     <p><span class="item_name">名前</span> <%= @user.name %></p>
@@ -17,7 +20,7 @@
       <div class="lower">
         <p><span class="item_name">登録日時</span> <%= l task.created_at, format: :long %></p>
         <p><span class="item_name">終了期限</span> <%= l task.expired_at, format: :long %></p>
-        <p><span class="item_name">ステータス</span> <%= task.status %></p>
+        <p><span class="item_name">ステータス</span> <%= task.status_name %></p>
         <p><span class="item_name">優先順位</span> <%= task.priority %></p>
       </div>
       <div class="btns">

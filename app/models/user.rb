@@ -13,9 +13,9 @@ class User < ApplicationRecord
   before_destroy :ensure_has_admin
 
    private
-   
+
    def ensure_has_admin
-     if self.admin && User.where(admin: true).count == 1
+     if User.where(admin: true).count == 1 && self.admin == "管理者"
        throw(:abort)
      end
    end
