@@ -17,6 +17,9 @@
     max-width: 33em;
     margin: 4em auto 0;
   }
+  .error {
+    padding-top: 16%
+  }
 
   .rails-default-error-page div.dialog > div {
     border: 1px solid #CCC;
@@ -36,6 +39,9 @@
     color: #730E15;
     line-height: 1.5em;
   }
+  p{
+   text-align: center;
+  }
 
   .rails-default-error-page div.dialog > p {
     margin: 0 0 1em;
@@ -51,17 +57,18 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+  img{
+    display: block;
+    margin: 0 auto;
+  }
+
   </style>
 </head>
-
-<body class="rails-default-error-page">
+<body>
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+  <div class="error">
+    <img src="/404.png">
+    <p>お探しのページは見つかりません。</p>
   </div>
 </body>
 </html>
