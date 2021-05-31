@@ -9,6 +9,7 @@ class TasksController < ApplicationController
     if params[:search]
       @tasks = @tasks.search_title(params[:search_title]) if params[:search_title].present?
       @tasks = @tasks.search_status(params[:search_status]) if params[:search_status].present?
+      @tasks = @tasks.search_label(params[:search_label]) if params[:search_label].present?
     end
 
     # if params[:sort_expired]

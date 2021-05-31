@@ -11,6 +11,8 @@
     <%= form.text_field :search_title, placeholder: "タスク名で検索" %>
     <%= form.label :search_status, "ステータス" %>
     <%= form.select :search_status, ['未着手', '着手', '完了'], { include_blank: '選択してください'} %>
+    <%= form.label :search_label, "ラベル" %>
+    <%= form.select :search_label, Label.pluck(:name, :id), { include_blank: '選択してください' } %>
     <%= form.submit "検索", name: "search" %>
   <% end %>
 </div>
