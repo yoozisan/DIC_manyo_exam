@@ -7,6 +7,11 @@
     <p><span class="item_name">登録日</span> <%= l @task.created_at %></p>
     <p><span class="item_name">ステータス</span> <%= @task.status_name %></P>
     <p><span class="item_name">優先順位</span> <%= @task.priority %></P>
+    <div class="label_block">
+      <% @task.labels.each do |label| %>
+        <span class="label label-success"><%= label.name %></span>
+      <% end %>
+    </div>
 
   </li>
 </ul>

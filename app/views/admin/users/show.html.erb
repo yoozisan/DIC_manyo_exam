@@ -22,12 +22,17 @@
         <p><span class="item_name">終了期限</span> <%= l task.expired_at, format: :long %></p>
         <p><span class="item_name">ステータス</span> <%= task.status_name %></p>
         <p><span class="item_name">優先順位</span> <%= task.priority %></p>
+        <div class="label_block">
+          <% task.labels.each do |label| %>
+            <span class="label label-success"><%= label.name %></span>
+          <% end %>
+        </div>
       </div>
       <div class="btns">
         <div class="innerblock">
           <%= link_to '詳細を確認する', task_path(task.id), class: "show_task" %>
-          <%= link_to "タスクを編集する", edit_task_path(task.id), data: { confirm: '本当に編集していいですか？' }, class: "edit_task" %>
-          <%= link_to 'タスクを削除する', task_path(task.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }, class: "delete_task" %>
+          <%= link_to "タスクを編集する", edit_task_path(task.id) %>
+          <%= link_to 'タスクを削除する', task_path(task.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
         </div>
       </div>
     </li>
