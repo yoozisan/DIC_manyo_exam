@@ -1,6 +1,7 @@
 <h1>タスク詳細画面</h1>
 <ul class="tasklist">
   <li>
+    <p><span class="item_name">User名</span> <%= @task.user.name %></p>
     <p><span class="item_name">タイトル:</span> <%= @task.title %></p>
     <p><span class="item_name">内容:</span> <%= @task.content %></p>
     <p><span class="item_name">終了期限</span> <%= l @task.expired_at %></p>
