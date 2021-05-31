@@ -16,3 +16,18 @@ User.create!(name: "管理者",
              password_confirmation: "111111",
              admin: true
              )
+
+Label.create!(
+  [
+    {name: 'ルンピニー'},
+    {name: 'ラジャ'},
+    {name: 'ツインズ'},
+    {name: 'ヨッカオ'},
+    {name: 'ブーン'},
+    {name: 'フェノム'},
+    {name: 'トップキング'},
+    {name: 'ウィンディ'},
+    {name: 'フェアテックス'},
+    {name: 'ヴェナム'}
+  ]
+)
