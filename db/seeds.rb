@@ -16,6 +16,17 @@ User.create!(name: "管理者",
              password_confirmation: "111111",
              admin: true
              )
+ 10.times do |n|
+   name = Faker::Games::Pokemon.name
+   email = Faker::Internet.email
+   password = "password"
+   User.create!(name: name,
+                email: email,
+                password: password,
+                password_confirmation: password,
+                admin: false
+                )
+ end
 
 Label.create!(
   [
@@ -31,3 +42,15 @@ Label.create!(
     {name: 'ヴェナム'}
   ]
 )
+
+10.times do |n|
+  title = Faker::Games::Pokemon.move
+  content = Faker::Games::Pokemon.location
+  expired_at = Faker::Date.between(from: '2021-05-27', to: '2021-09-27')
+  user_id = n + 1
+  Task.create!(title: title,
+               content: content,
+               expired_at: expired_at,
+               user_id: user_id,
+               )
+end
