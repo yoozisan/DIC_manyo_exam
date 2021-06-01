@@ -25,7 +25,9 @@ RSpec.describe 'タスク管理機能', type: :system do
         find("#task_expired_at_4i").find("option[value='10']").select_option
         find("#task_expired_at_5i").find("option[value='15']").select_option
         find("#task_status_name").find("option[value='着手']").select_option
-        click_on '登録する'
+        page.accept_confirm do
+          click_on '登録する'
+        end
         expect(page).to have_content 'task'
         expect(page).to have_content '着手'
       end
@@ -49,6 +51,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         within '.sort_expired' do
           click_on '終了期限でソートする'
         end
+        sleep(0.5)
         task_list = all('ul li')
         expect(task_list.first).to have_content Task.order(expired_at: :desc).first.title
       end

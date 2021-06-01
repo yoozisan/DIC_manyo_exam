@@ -7,12 +7,48 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 name = "kawa"
-email = "kawa@kawa.com"
+email = "kawa@dic.com"
 password = "kawakawa"
-User.create!(name: "管理者",
-             email: "admin@admin.com",
-             password_digest: "111111",
-             password: "111111",
-             password_confirmation: "111111",
+User.create!(name: name,
+             email: email,
+             password: password,
              admin: true
              )
+
+ 10.times do |n|
+   name = Faker::Games::Pokemon.name
+   email = Faker::Internet.email
+   password = "password"
+   User.create!(name: name,
+                email: email,
+                password: password,
+                admin: false
+                )
+ end
+
+Label.create!(
+  [
+    {name: 'ルンピニー'},
+    {name: 'ラジャ'},
+    {name: 'ツインズ'},
+    {name: 'ヨッカオ'},
+    {name: 'ブーン'},
+    {name: 'フェノム'},
+    {name: 'トップキング'},
+    {name: 'ウィンディ'},
+    {name: 'フェアテックス'},
+    {name: 'ヴェナム'}
+  ]
+)
+
+10.times do |n|
+  title = Faker::Games::Pokemon.move
+  content = Faker::Games::Pokemon.location
+  expired_at = Faker::Date.between(from: '2021-05-27', to: '2021-09-27')
+  user_id = n + 1
+  Task.create!(title: title,
+               content: content,
+               expired_at: expired_at,
+               user_id: user_id,
+               )
+end

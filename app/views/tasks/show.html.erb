@@ -1,12 +1,18 @@
 <h1>タスク詳細画面</h1>
 <ul class="tasklist">
   <li>
+    <p><span class="item_name">User名</span> <%= @task.user.name %></p>
     <p><span class="item_name">タイトル:</span> <%= @task.title %></p>
     <p><span class="item_name">内容:</span> <%= @task.content %></p>
     <p><span class="item_name">終了期限</span> <%= l @task.expired_at %></p>
     <p><span class="item_name">登録日</span> <%= l @task.created_at %></p>
     <p><span class="item_name">ステータス</span> <%= @task.status_name %></P>
     <p><span class="item_name">優先順位</span> <%= @task.priority %></P>
+    <div class="label_block">
+      <% @task.labels.each do |label| %>
+        <span class="label label-success"><%= label.name %></span>
+      <% end %>
+    </div>
 
   </li>
 </ul>
